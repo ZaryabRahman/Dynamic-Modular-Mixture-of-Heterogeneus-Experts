@@ -1,80 +1,84 @@
 # Dynamic-Modular-Mixture-of-Heterogeneus-Experts
 
 
+# Official Implementation for "One Model, Many Architectures: A Dynamic Modular Mixture of Heterogeneous Experts"
 
+**Authors:** Zaryab Rahman1, Fakhrud Din1, Shah Khalid1, and Ayman Qahmash2 
+**Affiliation:** University of Malakand, Chakdara, Pakistan  
+**Journal Submission:** *Under Review at Scientific Reports (Nature Portfolio)*
 
-Official Implementation for "One Model, Many Architectures: A Dynamic Modular Mixture of Heterogeneous Experts"
-Authors: Zaryab Rahman, Dr. Fakhruddin Ali
-Affiliation: University of Malakand, Chakdara, Pakistan
-Journal Submission: Scientific Reports (Nature Portfolio)
-Abstract
-(TODO: Copy and paste the complete abstract of your paper here. This is crucial as it provides an immediate summary of your work's contribution.)
-Code Overview
-This repository contains the official PyTorch implementation and experimental notebooks for our paper. The code is organized to allow for full reproducibility of our key findings.
-The primary contributions demonstrated in this code are:
-The implementation of our novel Dynamic Modular Mixture of Heterogeneous Experts (DMMoE) architecture.
-Benchmarking experiments on CIFAR-10 comparing DMMoE to homogeneous MoE and dense baselines.
-In-depth analysis of the model's emergent capabilities, including modality-aware routing and transfer learning.
-Repository Structure
-The code is organized into two main Jupyter Notebooks, each corresponding to a distinct set of experiments:
-DMMoE_CIFAR10_Benchmark.ipynb: Contains the code to reproduce the main benchmarking results on the CIFAR-10 dataset, comparing our model against homogeneous and dense baselines. This notebook also includes our implementation of the essential Load Balancing Loss.
-DMMoE_Analysis_and_Applications.ipynb: Contains the code for the advanced analytical experiments presented in the paper, including:
-The VQA Multimodal Routing Analysis (Figure 4).
-The Few-Shot Learning Baselines.
-The core Transfer Learning and Expert Utilization Analysis (Figure 5).
-Setup and Installation
-To run these experiments, you will need a Python environment with the necessary dependencies. A CUDA-enabled GPU is highly recommended for reasonable training times.
-1. Clone the Repository
-code
-Bash
-git clone https://github.com/YourUsername/Your-Repository-Name.git
-cd Your-Repository-Name
-(Note: Replace YourUsername/Your-Repository-Name with your actual GitHub URL)
-2. Create a Python Environment
-We recommend using Conda or a virtual environment to manage dependencies.
-code
-Bash
-# Using Conda
-conda create -n dmmoe python=3.9
-conda activate dmmoe
+---
 
-# Or using venv
-python -m venv dmmoe_env
-source dmmoe_env/bin/activate
-3. Install Dependencies
-All required libraries are listed in the requirements.txt file.
-code
-Bash
-pip install -r requirements.txt
-(Note: Ensure you have created the requirements.txt file by running pip freeze > requirements.txt from your activated project environment.)
-Running the Experiments
-The experiments are self-contained within the Jupyter Notebooks.
-Start a Jupyter Server: From the root of the cloned repository, run:
-code
-Bash
-jupyter notebook
-or
-code
-Bash
-jupyter lab
-Navigate and Run:
-To reproduce the main CIFAR-10 benchmark, open and run the cells in DMMoE_CIFAR10_Benchmark.ipynb. The notebook is set up to run the main DMMoE experiment by default. The baseline experiments are included but commented out.
-To reproduce the analytical and application-focused experiments, open and run the cells in DMMoE_Analysis_and_Applications.ipynb.
-The notebooks have been structured with Markdown cells to explain each step of the process. All datasets (CIFAR-10, SVHN, AG_NEWS, IMDb) will be downloaded automatically by the helper functions in the code.
-Data Availability
-The datasets used in this study are all publicly available and will be downloaded automatically by the scripts within the notebooks.
-CIFAR-10: https://www.cs.toronto.edu/~kriz/cifar.html
-SVHN: http://ufldl.stanford.edu/housenumbers/
-AG_NEWS & IMDb: Sourced from standard repositories as detailed in the notebooks.
-The source code is fully available in this GitHub repository.
-Citation
-If you find our work useful in your research, please consider citing our paper.
-(This section will be updated with the full citation once the paper is published.)
-code
-Code
+## Abstract
+*The Mixture-of-Experts (MoE) paradigm has emerged as a key strategy for scaling large models efficiently by activating only a
+sparse subset of their parameters. However, existing MoE models typically rely on a pool of homogeneous experts, which
+can limit their ability to capture the diverse structural priors needed for complex tasks. In this work, we introduce the Dynamic
+Modular Mixture of Heterogeneous Experts (DMMoE), a novel architecture that combines sparsity with true architectural
+specialization. Our model features a pool of structurally diverse experts (e.g., convolutional, attention-based, and recurrent) and
+learns a dynamic routing mechanism to select a sparse combination of them for each input token. We conduct a comprehensive
+empirical validation across multiple domains. First, we show that DMMoE achieves performance competitive with dense
+baselines on single-modality vision and language tasks with up to 24% fewer computational FLOPs. Second, on a challenging
+Visual Question Answering (VQA) task, we demonstrate that the model learns an intelligent, modality-aware routing policy,
+assigning image and text tokens to different architectural specialists within a single forward pass. Finally, our investigation into
+the model’s generalization capabilities reveals a nuanced picture. On in-domain tasks, DMMoE demonstrates remarkable data
+efficiency, achieving 89.97% accuracy on 20-shot AG News with pre-trained experts. However, in a true cross-domain setting,
+we observe a clear case of negative transfer, highlighting the challenges of knowledge reuse across disparate tasks. Crucially,
+we show that even during this negative transfer, DMMoE’s dynamic routing mechanism successfully adapts by identifying and
+suppressing irrelevant experts, demonstrating intelligent architectural control.*
+
+---
+
+## Code Overview
+This repository provides the official **PyTorch** implementation to reproduce the findings presented in our **submitted manuscript**.  
+The implementation is organized into **two primary Jupyter Notebooks**, each focusing on a specific experimental domain.
+
+---
+
+## Repository Structure
+
+- **`DMMoE_CIFAR10_Benchmark.ipynb`**  
+  Implements and benchmarks our proposed **DMMoE** model on the **CIFAR-10** dataset.  
+  Includes comparative experiments with:
+  - Homogeneous MoE (MLP experts only)
+  - Dense Vision Transformer  
+  Also contains the **Load Balancing Loss** implementation, essential for stable MoE training.
+
+- **`DMMoE_Analysis_and_Applications.ipynb`**  
+  Provides advanced analytical experiments showcasing the unique capabilities of our model:  
+  - **VQA Multimodal Routing Analysis** (Figure 4)  
+  - **Few-Shot Learning Baselines**  
+  - **Transfer Learning & Expert Utilization Analysis** (Figure 5)
+
+---
+
+## Reproducibility
+
+### Running Experiments
+1. Open the desired notebook.
+2. Execute cells sequentially.  
+3. Datasets (CIFAR-10, SVHN, AG_NEWS, IMDb) are automatically downloaded via helper functions.  
+
+Each notebook contains detailed **Markdown annotations** explaining the purpose and relevance of each code block.
+
+---
+
+## Data Availability
+All datasets used are **publicly available** and automatically handled by our scripts.  
+The **full source code** for all experiments is contained within this repository.
+
+---
+
+## Citation
+If you find this work useful, please consider citing our **preprint/manuscript**:
+
+bibtex
 @article{Rahman2025DMMoE,
   author    = {Rahman, Zaryab and Ali, Fakhruddin},
   title     = {One Model, Many Architectures: A Dynamic Modular Mixture of Heterogeneous Experts},
-  journal   = {Scientific Reports},
+  journal   = {Submitted to Scientific Reports},
   year      = {2025},
 }
+
+
+
+
