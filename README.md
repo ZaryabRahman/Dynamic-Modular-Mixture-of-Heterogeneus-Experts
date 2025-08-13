@@ -69,15 +69,8 @@ The **full source code** for all experiments is contained within this repository
 ---
 
 ## Citation
-If you find this work useful, please consider citing our **preprint/manuscript**:
+Will be added after publishing. 
 
-bibtex
-@article{Rahman2025DMMoE,
-  author    = {Rahman, Zaryab and Ali, Fakhruddin},
-  title     = {One Model, Many Architectures: A Dynamic Modular Mixture of Heterogeneous Experts},
-  journal   = {Submitted to Scientific Reports},
-  year      = {2025},
-}
 
 
 
