@@ -60,6 +60,9 @@ The implementation is organized into **two primary Jupyter Notebooks**, each foc
 
 Each notebook contains detailed **Markdown annotations** explaining the purpose and relevance of each code block.
 
+### A Note On Reproducibility
+A Note on Reproducibility: Due to the stochastic nature of router initialization in few-shot training, individual runs may produce slightly different but comparable results. For instance, the notebook's AG News fine-tuning run may yield an accuracy around 90.14%, while the canonical result reported in the manuscript from our official experiments is 89.97%.
+
 ---
 
 ## Data Availability
